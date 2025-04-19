@@ -22,23 +22,26 @@ function GlobeBackground({children}) {
 
     // Create globe
     return (
-    <>
-        <Globe
-            ref={globeEl}
-            globeImageUrl={'water.png'} // Globe texture
-            backgroundColor='#f6e6d0' // Sky color
-            showAtmosphere={false}
-            animateIn={true} // Spin globe when loading
+        <>
+            <div id="globe">
+                <Globe
+                    ref={globeEl}
+                    globeImageUrl={'water.png'} // Globe texture
+                    backgroundColor='#f6e6d0' // Sky color
+                    showAtmosphere={false}
+                    animateIn={true} // Spin globe when loading
 
-            polygonsData={countries.features.filter(d => d.properties.ISO_A2 !== 'AQ')} // Draw countries
-            polygonAltitude={0.015} // Distance of land above water
-            polygonCapColor={d => colorCountry(d)} // Set colors of countries
-            polygonStrokeColor={() => DEFAULT_COLOR} // Draw borders between countries
-            polygonsTransitionDuration={0} // Draw polygons right away
-        />
+                    polygonsData={countries.features.filter(d => d.properties.ISO_A2 !== 'AQ')} // Draw countries
+                    polygonAltitude={0.015} // Distance of land above water
+                    polygonCapColor={d => colorCountry(d)} // Set colors of countries
+                    polygonStrokeColor={() => DEFAULT_COLOR} // Draw borders between countries
+                    polygonsTransitionDuration={0} // Draw polygons right away
+                />
+            </div>
 
-        <div style={{position: 'absolute', top: 0, left: 0}}>{children}</div>
-    </>
+            <div style={{position: 'absolute', top: 0, left: 0}}>{children}</div>
+        </>
+    
     );
     
 }
